@@ -21,7 +21,7 @@ transition: all 0.3s ease-out;
 
 
 body {
-    font-family: font-primary;
+    font-family: "Roboto", sans-serif;
     color: #333;
 }
 img {  /*aby byly obrázky max na šířku stránky a nenutily nás scrollovat doprava*/
@@ -124,10 +124,25 @@ a{
 .wrapper--b-margin{
     margin-bottom: 1.5rem;
 }
-@media (min-width: 800px){
-    .wrapper--b-margin{margin-bottom: 3.875rem;}
+.wrapper--no-padding-until-medium{
+    padding-left: 0;
+    padding-right: 0;
 }
-
+.wrapper--no-padding-until-large{
+    padding-left: 0;
+    padding-right: 0;
+}
+@media (min-width: 800px){
+    .wrapper--b-margin{margin-bottom: 3.875rem;} 
+    .wrapper--no-padding-until-medium{
+        padding-left:18px;
+        padding-right: 18px;}  
+}
+@media (min-width: 1010px){
+    .wrapper--no-padding-until-large{
+        padding-left:18px;
+        padding-right: 18px;}
+}
 
 /*page-section*/
 .page-section{
@@ -137,9 +152,27 @@ a{
     background-color: #2f5572;
     color: #fff;
 }
-@media (min-width: 800px){
-    .page-section{padding: 4.5rem 0;}
+.page-section--testimonials{
+    background-color: #e0e6ef;
 }
+.page-section--no-b-padding-until-medium{
+    padding-bottom: 0;
+}
+.page-section--no-b-padding-until-large{
+    padding-bottom: 0;
+}
+@media (min-width: 800px){
+    /*.page-section{padding: 4.5rem 0;}  */
+    .page-section--no-b-padding-until-medium{padding-bottom: 0;}
+}
+@media (min-width: 1010px){
+    .page-section--no-b-padding-until-large{padding-bottom: 0;}
+    .page-section--testimonials{
+                background: url('../images/testimonials-bg.jpg') top center no-repeat;
+                background-size: cover;}
+    .page-section{padding: 4.5rem 0;} 
+}
+
 
 /*headline*/
 .headline{
@@ -193,6 +226,28 @@ a{
 .row__medium-8--smaller{width: 63%;}
 .row__medium-6{float: left;
             width: 50%;}
+.row--equal-height-at-medium{display: flex;}
+}
+@media (min-width: 1010px){
+.row__b-margin-until-large{margin-bottom: 0;}
+.row__large-4{float: left;
+                width: 33.33%;}
+.row__large-8{float: left;
+                width:66.66%;}
+.row__large-4--larger{width: 37%;}
+.row__large-8--smaller{width: 63%;}
+.row__large-6{float: left;
+            width: 50%;}
+.row--equal-height-at-large{display: flex;}
+}
+
+.row--equal-height-at-medium > div{
+    float: none;
+    display: flex;
+}
+.row--equal-height-at-large > div{
+    float: none;
+    display: flex;
 }
 .row--gutters{   /*tohle je jen kvůli nadcházejícímu řádku, abych měla přesné sloupce na třetiny, jinak mi bude těch 65px od toho posledního vpravo viset*/
     margin-right: -65px;
@@ -200,11 +255,20 @@ a{
 .row--gutters-large{
     margin-right: -100px;
 }
+.row--gutters-small{
+    margin-right: -45px;
+}
 .row--gutters > div{ /*styluju ne třídu gutters, ale přímé děti té třídy gutters*/
     padding-right: 65px;
 }
-.row--gutters > div{
+.row--gutters-large > div{
     padding-right: 100px;
+}
+.row--gutters-small > div{
+    padding-right: 45px;
+}
+.row--t-padding{
+    padding-top: 80px;
 }
 
 /*generic-content-container*/
@@ -226,6 +290,9 @@ a{
     text-align: center;
     margin-bottom: 4rem;
 }
+.section-title--color{
+    color: #2f5572;
+}
 @media (min-width: 530px){
     .section-title{font-size: 3.75rem;}
 }
@@ -236,7 +303,9 @@ a{
     margin-bottom: .6rem;
 }
 @media (min-width: 530px){
-  .section-title__icon{display: inline-block;
+  .section-title__icon{position: relative;
+                       top: 8px;
+                        display: inline-block;
                        margin-right: .5rem;
                        margin-bottom: 0;
                         margin-left: 0;}
@@ -267,4 +336,42 @@ a{
 @media (min-width: 530px){
     .feature-item__title{font-size: 1.875rem;
                         text-align: left;}
+}
+
+/*testimonial*/
+.testimonial{
+    background-color: rgba(255,255,255,.8);
+    padding: 0 18px 15px 18px;
+    margin-bottom: 98px;
+}
+.testimonial--last{
+    margin-bottom: 0;
+}
+@media (min-width: 1010px){
+    .testimonial{padding: 0 1.8125rem 15px 1.8125rem;
+                margin-bottom: 0;}
+}
+.testimonial__photo{
+    border-radius: 80px;
+    overflow: hidden;
+    width: 160px;
+    height: 160px;
+    margin: 0 auto -80px auto;
+    position: relative;
+    top: -80px;
+    border: 6px solid rgba(255,255,255,.8);
+}
+.testimonial__title{
+    color: #2f5572;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin: 0;
+}
+.testimonial__subtitle{
+    text-align: center;
+    color: #d59541;
+    font-weight: 400;
+    font-size: .9375rem;
+    margin: .25rem 0 1rem 0;
 }
